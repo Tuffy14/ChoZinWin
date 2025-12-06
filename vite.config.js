@@ -1,9 +1,7 @@
 // vite.config.js
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/ChoZinWin/',   // 👈 IMPORTANT
-  build: {
-    outDir: 'dist',      // build goes to /dist
-  },
+  plugins: [react()],
 })
