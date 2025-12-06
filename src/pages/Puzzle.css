@@ -12,7 +12,6 @@
   50% { background-position: 100% 50%; }
 }
 
-/* --- Popups --- */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -41,7 +40,7 @@
   max-width: 600px;
   width: 90%;
   text-align: center;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   max-height: 90vh;
@@ -88,12 +87,6 @@
   margin: 0;
 }
 
-/* --- Error Popup Style --- */
-.error-popup h1 {
-  color: #d9534f; /* Reddish tone for error */
-}
-
-/* --- Home Button --- */
 .home-btn {
   position: absolute;
   top: 2rem;
@@ -120,7 +113,6 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Puzzle Layout --- */
 .puzzle-content {
   max-width: 1000px;
   margin: 0 auto;
@@ -157,6 +149,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
+  margin-bottom: 3rem;
 }
 
 .letters-section,
@@ -186,7 +179,6 @@
   justify-content: center;
 }
 
-/* --- Letter Styles --- */
 .letter {
   width: 60px;
   height: 60px;
@@ -199,10 +191,22 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: #8b5a7a;
-  cursor: pointer;
+  cursor: grab;
   transition: all 0.3s ease;
   user-select: none;
-  touch-action: manipulation;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.letter.clickable {
+  cursor: pointer;
+}
+
+.letter.clickable:active {
+  transform: scale(0.95);
 }
 
 .letter:hover {
@@ -216,12 +220,6 @@
   transform: scale(0.95);
 }
 
-.letter.invisible {
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* --- Drop Zone Styles --- */
 .drop-zone {
   width: 60px;
   height: 60px;
@@ -235,8 +233,17 @@
   color: #8b5a7a;
   background: rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
-  touch-action: manipulation;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
 }
+
+.drop-zone.drag-over {
+  background: rgba(212, 165, 196, 0.3);
+  border-color: #c99bb0;
+  border-style: solid;
+  transform: scale(1.1);
+}
+
 
 .drop-zone.filled {
   background: rgba(255, 255, 255, 0.9);
@@ -263,7 +270,6 @@
   }
 }
 
-/* --- Controls and Indicators --- */
 .solved-indicator {
   margin-top: 1.5rem;
   display: flex;
@@ -337,14 +343,54 @@
   }
 }
 
-/* --- Buttons and Controls Section --- */
 .puzzle-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 600px;
-    margin: 3rem auto 0 auto;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-control {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 2px solid rgba(201, 155, 176, 0.3);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #8b5a7a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-control:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(201, 155, 176, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-control:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.skip-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: 2px solid rgba(201, 155, 176, 0.3);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #8b5a7a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skip-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(201, 155, 176, 0.5);
+  transform: translateY(-2px);
 }
 
 .btn-primary {
@@ -365,50 +411,12 @@
   box-shadow: 0 12px 32px rgba(201, 155, 176, 0.4);
 }
 
-.btn-secondary {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border: 2px solid rgba(201, 155, 176, 0.3);
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0.8);
-  color: #8b5a7a;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  flex-grow: 1;
-  justify-content: center;
-}
-
-.btn-secondary.skip-btn {
-  font-size: 1.1rem;
-  padding: 1rem 2.5rem;
-  flex-grow: 0;
-  min-width: 150px;
-}
-
-.btn-secondary:hover:not(.disabled) {
-  background: rgba(255, 255, 255, 1);
-  border-color: rgba(201, 155, 176, 0.5);
-  transform: translateY(-2px);
-}
-
-.btn-secondary.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-}
-
 .button-group {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 968px) {
   .puzzle-area {
     grid-template-columns: 1fr;
@@ -417,10 +425,6 @@
 
   .puzzle-content {
     padding-top: 4rem;
-  }
-
-  .puzzle-controls {
-    flex-direction: column-reverse;
   }
 }
 
@@ -443,22 +447,13 @@
 
   .letter,
   .drop-zone {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     font-size: 1.2rem;
   }
 
   .popup-card {
     padding: 2rem 1.5rem;
   }
-
-  .puzzle-controls {
-    max-width: 100%;
-  }
-
-  .btn-secondary,
-  .btn-secondary.skip-btn {
-      width: 100%;
-      margin: 0.5rem 0;
-  }
 }
+
