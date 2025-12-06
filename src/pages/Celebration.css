@@ -1,0 +1,111 @@
+.celebration-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5e6f0 0%, #e8d5e3 25%, #f0e1ed 50%, #e8d5e3 75%, #f5e6f0 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.celebration-content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.celebration-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: #8b5a7a;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.celebration-name {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 400;
+  background: linear-gradient(135deg, #c99bb0 0%, #a67a94 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 3rem;
+  letter-spacing: 1px;
+}
+
+.message-box {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 32px;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: left;
+}
+
+.message-text {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: #7a5a6b;
+  line-height: 1.9;
+  margin: 0;
+  font-weight: 400;
+}
+
+.btn-primary {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #d4a5c4 0%, #c99bb0 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(201, 155, 176, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(201, 155, 176, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .celebration-container {
+    padding: 1rem;
+  }
+
+  .message-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .message-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
