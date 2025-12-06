@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ChoZinWin/',   // your repo name
+  base: '/ChoZinWin/',  // GitHub repo name
   build: {
-    outDir: 'dist',
+    outDir: 'dist',  // Ensure build outputs to dist
   },
 })
